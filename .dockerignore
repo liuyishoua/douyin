@@ -1,0 +1,9 @@
+.git
+.venv
+datas
+.env
+.env.*
+__pycache__
+*.pyc
+*.log
+_scratch*
