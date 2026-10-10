@@ -33,6 +33,8 @@ def create_app(directory=None, adapter=None, background=True):
     app.config.update(MAX_CONTENT_LENGTH=2*1024*1024, TRUSTED_HOSTS=['localhost', '127.0.0.1', '[::1]', VERIFICATION_HOST])
     s = Service(directory or Path('datas/web'), adapter=adapter, background=background)
     app.extensions['console'] = s
+    from .channel_bridge import register_channel
+    register_channel(app, s)
 
     @app.before_request
     def same_origin():
